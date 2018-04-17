@@ -316,7 +316,7 @@ exec franz-bin
 exec_always compton
 exec ~/Downloads/franz.appimage
 exec nm-applet
-exec_always feh --bg-fill /home/vedant/Pictures/firewatch.png
+exec_always feh --bg-fill /home/vedant/Pictures/wall.jpg
 exec_always --no-startup-id xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1
 exec_always --no-startup-id xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Natural Scrolling Enabled' 1
 exec_always --no-startup-id xautolock -time 5 -locker 'i3lock -i  ~/Pictures/greeter.png'
@@ -340,5 +340,5 @@ bindsym $alt+$home exec "banshee --pause"
 bindsym $alt+$pgup exec "banshee --previous"
 bindsym $alt+$pgdwn exec "banshee --next"
 bindsym $alt+control+n exec "nautilus"
-bindsym shift+Print exec scrot -s '%d.%m.%Y.screenshot.jpg' -e 'mv $f ~/Pictures/screenshots' 
-bindsym control+Print exec scrot  '%d.%m.%Y.screenshot.jpg' -e 'mv $f ~/Pictures/screenshots' 
+bindsym shift+Print exec scrot -s '%d.%m.%Y.%H:%M:%S.screenshot.jpg' -e 'mv $f ~/Pictures/screenshots' 
+bindsym control+Print exec scrot  '%d.%m.%Y.%H:%M:%S.screenshot.jpg' -e 'mv $f ~/Pictures/screenshots' 

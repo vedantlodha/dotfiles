@@ -335,10 +335,9 @@ bindsym $mod+d exec --no-startup-id rofi -show run -opacity 80
 bindsym $mod+control+c exec "urxvt -e vim ~/.config/i3/config"
 bindsym $alt+control+r exec urxvt -e ranger
 bindsym $alt+control+e exec nautilus
-bindsym $alt+$del exec "banshee --play"
-bindsym $alt+$home exec "banshee --pause"
-bindsym $alt+$pgup exec "banshee --previous"
-bindsym $alt+$pgdwn exec "banshee --next"
+bindsym $alt+$home exec "playerctl play-pause"
+bindsym $alt+$pgup exec "playerctl previous"
+bindsym $alt+$pgdwn exec "playerctl next"
 bindsym $alt+control+n exec "nautilus"
 bindsym shift+Print exec scrot -s '%d.%m.%Y.%H:%M:%S.screenshot.jpg' -e 'mv $f ~/Pictures/screenshots' 
 bindsym control+Print exec scrot  '%d.%m.%Y.%H:%M:%S.screenshot.jpg' -e 'mv $f ~/Pictures/screenshots' 

@@ -271,7 +271,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 # bar
 bar {
-	status_command "i3status -c ~/.config/i3status/i3status.conf"
+	status_command "i3status -c ~/dotfiles/i3status/config"
 	position top
 	colors {
 		background $bg-color
@@ -310,8 +310,6 @@ bindsym XF86AudioPrev exec playerctl previousk
 #exec
 exec firefox
 exec spotify
-exec atom
-exec thunderbird
 exec franz-bin
 exec_always compton
 exec ~/Downloads/franz.appimage

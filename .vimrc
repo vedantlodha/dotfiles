@@ -50,3 +50,11 @@ let g:NERDTrimTrailingWhitespace = 1
 
 
 map <C-n> :NERDTree
+colorscheme badwolf
+    if has("autocmd")
+      augroup templates_
+        autocmd BufNewFile *.cpp 0r ~/.template.cpp
+      augroup END
+    endif
+        set autowrite
+nnoremap <C-c> :!g++ -std=c++11 % -Wall -g -o %.out && ./%.out<CR>

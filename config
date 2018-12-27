@@ -44,7 +44,7 @@ set $terminal urxvt
 # kill focused window
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+p kill
-
+bindsym $mod+control+k xkill
 
 
 
@@ -126,6 +126,10 @@ bindsym $mod+o scratchpad show
 exec --no-startup-id urxvt -name urxvt_scratchpad -geometry 130x40
 for_window [instance="urxvt_scratchpad"] floating enable
 for_window [instance="urxvt_scratchpad"] move scratchpad
+
+
+
+
 #for gaps
 #hide_edge_borders both
 #for_window [class="^.*"] border pixel 0
@@ -155,7 +159,7 @@ set $workspace10 "10."
 set $workspace5 "5."
 set $workspace6 "6. "
 set $workspace7 "7"
-set $workspace8 "8"
+set $workspace8 "8"
 
 set $workspaceE1 "1E"
 set $workspaceE2 "2E"
@@ -201,7 +205,7 @@ bindsym $mod+Shift+4 move container to workspace $workspace4
 bindsym $mod+Shift+5 move container to workspace $workspace5
 bindsym $mod+Shift+6 move container to workspace $workspace6
 bindsym $mod+Shift+7 move container to workspace $workspace7
-bindsym $mod+Shift+8 move container to workspace $workspace81
+bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
@@ -220,14 +224,17 @@ bindsym $alt+Shift+9 move container to workspace $workspaceE9
 
 assign [class="Google-chrome"] $workspace6
 assign [class="Atom"] $workspace4
-assign [class="Franz"] $workspace5
+assign [class="Rambox"] $workspace5
 assign [class="Firefox"] $workspace3
 assign [class="NetBeans IDE 8.2"] $workspace7
 assign [class="Thunderbird"] $workspace8
 assign [class="Spotify"] $workspace10
 assign [class="spotify"] $workspace10
-
+assign [class="calcurse"] $workspace8
+for_window [class="calcurse"] move window to workspace $workspace8
 for_window [class="Spotify"] move window to workspace $workspace10
+for_window [class="MPlayer"] floating enable
+for_window [class="feh"] floating enable
 
 
 # reload the configuration file
@@ -282,6 +289,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 bar {
 	status_command "i3status -c ~/dotfiles/i3status/config"
 	position top
+        i3bar_command i3bar -t
 	colors {
 		background $bg-color
 	    	separator #757575
@@ -316,25 +324,29 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previousk
 
 
-#exec
+#startup
 exec firefox
-exec spotify
+#exec spotify
 exec_always compton
-exec ~/Downloads/franz.appimage
 exec nm-applet
-exec_always feh --bg-fill /home/vedant/Pictures/wall.jpg
+exec rambox
+exec_always feh --bg-fill /home/vedant/Pictures//Wallpapers/walli.jpg
 exec_always --no-startup-id xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1
 exec_always --no-startup-id xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Natural Scrolling Enabled' 1
 exec_always --no-startup-id xautolock -time 5 -locker 'i3lock -i  ~/Pictures/greeter.png'
+#for redshift
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
+
 
 #bindsym
 bindsym $alt+control+f exec firefox
 bindsym $alt+shift+f exec firefox --private-window
+bindsym control+$alt+w exec rambox
 bindsym $alt+control+g exec google-chrome-stable
 bindsym $alt+control+m exec banshee
 bindsym $alt+control+$del exec i3lock -i ~/Pictures/lock1.jpg
 bindsym $alt+control+s exec "i3lock -i ~/Pictures/lock1.jpg && systemctl suspend"
-bindsym $mod+shift+o exit
+# bindsym $mod+shift+o exit
 bindsym $mod+Return exec urxvt 
 bindsym $mod+d exec --no-startup-id rofi -show run -opacity 80
 bindsym $mod+. exec --no-startup-id rofi -show run -opacity 80
@@ -347,5 +359,6 @@ bindsym $alt+$pgdwn exec "playerctl next"
 bindsym $alt+control+n exec "nautilus"
 bindsym shift+Print exec scrot -s '%d.%m.%Y.%H:%M:%S.screenshot.jpg' -e 'mv $f ~/Pictures/screenshots' 
 bindsym control+Print exec scrot  '%d.%m.%Y.%H:%M:%S.screenshot.jpg' -e 'mv $f ~/Pictures/screenshots' 
-bindsym control+$alt+w exec ~/Downloads/franz.appimage
-
+bindsym control+$alt+p exec pavucontrol
+bindsym control+q  exec null
+bindsym $alt+control+c exec "urxvt -name calcurse -e calcurse "
